@@ -4,6 +4,9 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/eye/AndroidStudioProjects/AndrDemoCode/app/src/main/res/layout/activity_main.xml" value="0.3473731884057971" />
+        <entry key="..\:/Users/eye/AndroidStudioProjects/AndrDemoCode/app/src/main/res/layout/activity_multi_music_source_collection.xml" value="0.30104166666666665" />
+        <entry key="..\:/Users/eye/AndroidStudioProjects/AndrDemoCode/app/src/main/res/layout/fragment_source_one.xml" value="0.3359375" />
+        <entry key="..\:/Users/eye/AndroidStudioProjects/AndrDemoCode/app/src/main/res/layout/fragment_source_two.xml" value="0.32135416666666666" />
       </map>
     </option>
   </component>
