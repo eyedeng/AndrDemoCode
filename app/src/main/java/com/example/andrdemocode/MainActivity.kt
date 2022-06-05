@@ -4,7 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.andrdemocode.databinding.ActivityMainBinding
-import com.example.andrdemocode.tabview.MultiMusicSourceCollectionActivity
+import com.example.andrdemocode.grouprv.GroupRVActivity
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
@@ -15,7 +15,8 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.jump.setOnClickListener {
-            startActivity(Intent(this, MultiMusicSourceCollectionActivity::class.java))
+//            startActivity(Intent(this, MultiMusicSourceCollectionActivity::class.java))
+            startActivity(Intent(this, GroupRVActivity::class.java))
 
         }
     }
