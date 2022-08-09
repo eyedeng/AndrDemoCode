@@ -9,13 +9,15 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.andrdemocode.R;
+import com.example.andrdemocode.base.BaseFragment;
+import com.example.andrdemocode.base.XLog;
 
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link SourceTwoFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class SourceTwoFragment extends Fragment {
+public class SourceTwoFragment extends BaseFragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -61,6 +63,7 @@ public class SourceTwoFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+        XLog.i("Fragment onCreateView %s", TAG);
         return inflater.inflate(R.layout.fragment_source_two, container, false);
     }
 }

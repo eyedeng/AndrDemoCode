@@ -19,6 +19,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/white"
-        app:layoutManager="LinearLayoutManager"/>
+        app:layoutManager="LinearLayoutManager"
+        tools:listitem="@layout/main_function_item"
+        tools:itemCount="3"/>
 
 </LinearLayout>

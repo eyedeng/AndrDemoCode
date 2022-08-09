@@ -9,6 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AndrDemoCode">
+        <activity android:name=".timer.CountActivity"></activity>
         <activity android:name=".grouprv.GroupRVActivity" />
         <activity
             android:name=".tabview.MultiMusicSourceCollectionActivity"
