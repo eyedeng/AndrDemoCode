@@ -11,6 +11,8 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.andrdemocode.databinding.ActivityMainBinding
 import com.example.andrdemocode.grouprv.GroupRVActivity
+import com.example.andrdemocode.lauchmode.AActivity
+import com.example.andrdemocode.lauchmode.RouterActivity
 import com.example.andrdemocode.tabview.MultiMusicSourceCollectionActivity
 import com.example.andrdemocode.timer.CountActivity
 
@@ -23,6 +25,7 @@ class MainActivity : AppCompatActivity() {
         const val DEST_GROUP = 1
         const val DEST_TAB = 2
         const val DEST_COUNT = 3
+        const val DEST_RAHUL = 4
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -33,7 +36,8 @@ class MainActivity : AppCompatActivity() {
         binding.jump.setOnClickListener {
 //            startActivity(Intent(this, MultiMusicSourceCollectionActivity::class.java))
 //            startActivity(Intent(this, GroupRVActivity::class.java))
-            startActivity(Intent(this, CountActivity::class.java))
+//            startActivity(Intent(this, CountActivity::class.java))
+            startActivity(Intent(this, RouterActivity::class.java))
 
         }
 
@@ -45,6 +49,7 @@ class MainActivity : AppCompatActivity() {
         dataSet.add(Item("DEST_GROUP", DEST_GROUP))
         dataSet.add(Item("DEST_TAB", DEST_TAB))
         dataSet.add(Item("DEST_COUNT", DEST_COUNT))
+        dataSet.add(Item("DEST_RAHUL", DEST_RAHUL))
     }
 
     private fun intView() {
@@ -91,6 +96,7 @@ class MainActivity : AppCompatActivity() {
                 DEST_GROUP -> context.startActivity(Intent(context, GroupRVActivity::class.java))
                 DEST_TAB -> context.startActivity(Intent(context, MultiMusicSourceCollectionActivity::class.java))
                 DEST_COUNT -> context.startActivity(Intent(context, CountActivity::class.java))
+                DEST_RAHUL -> context.startActivity(Intent(context, com.example.andrdemocode.rahul.MainActivity::class.java))
             }
         }
     }
