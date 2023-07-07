@@ -13,6 +13,7 @@ import com.example.andrdemocode.databinding.ActivityMainBinding
 import com.example.andrdemocode.grouprv.GroupRVActivity
 import com.example.andrdemocode.lauchmode.AActivity
 import com.example.andrdemocode.lauchmode.RouterActivity
+import com.example.andrdemocode.ssl.SingleSelectListActivity
 import com.example.andrdemocode.tabview.MultiMusicSourceCollectionActivity
 import com.example.andrdemocode.timer.CountActivity
 
@@ -37,7 +38,8 @@ class MainActivity : AppCompatActivity() {
 //            startActivity(Intent(this, MultiMusicSourceCollectionActivity::class.java))
 //            startActivity(Intent(this, GroupRVActivity::class.java))
 //            startActivity(Intent(this, CountActivity::class.java))
-            startActivity(Intent(this, RouterActivity::class.java))
+//            startActivity(Intent(this, RouterActivity::class.java))
+            startActivity(Intent(this, SingleSelectListActivity::class.java))
 
         }
 
