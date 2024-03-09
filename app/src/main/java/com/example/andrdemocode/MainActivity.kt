@@ -9,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.example.andrdemocode.architecture.mvvm.PatternsActivity
 import com.example.andrdemocode.databinding.ActivityMainBinding
 import com.example.andrdemocode.grouprv.GroupRVActivity
 import com.example.andrdemocode.lauchmode.AActivity
@@ -39,7 +40,7 @@ class MainActivity : AppCompatActivity() {
 //            startActivity(Intent(this, GroupRVActivity::class.java))
 //            startActivity(Intent(this, CountActivity::class.java))
 //            startActivity(Intent(this, RouterActivity::class.java))
-            startActivity(Intent(this, SingleSelectListActivity::class.java))
+            startActivity(Intent(this, PatternsActivity::class.java))
 
         }
 
