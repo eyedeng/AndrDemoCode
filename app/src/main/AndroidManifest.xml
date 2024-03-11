@@ -28,6 +28,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <service android:name=".service.HelloService" />
         <provider
             android:authorities="com.example.andrdemocode.fileprovider"
             android:name="androidx.core.content.FileProvider"

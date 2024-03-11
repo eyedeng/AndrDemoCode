@@ -2,6 +2,7 @@ package com.example.andrdemocode.grouprv;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import com.example.andrdemocode.databinding.ActivityGroupRvactivityBinding;
@@ -10,6 +11,7 @@ import com.example.andrdemocode.grouprv.adapter.EventsAdapter;
 import com.example.andrdemocode.grouprv.adapter.HeaderItem;
 import com.example.andrdemocode.grouprv.adapter.ListItem;
 import com.example.andrdemocode.grouprv.model.Event;
+import com.example.andrdemocode.service.HelloService;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,6 +28,7 @@ public class GroupRVActivity extends AppCompatActivity {
 
         initData(items);
         binding.recyclerView.setAdapter(new EventsAdapter(items));
+        startService(new Intent(this, HelloService.class));
     }
 
     private void initData(List<ListItem> items) {
