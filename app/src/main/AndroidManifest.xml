@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AndrDemoCode">
         <activity
+            android:name=".storage.StorageActivity"
+            android:exported="false" />
+        <activity
             android:name=".multimedia.MediaActivity"
             android:exported="false" />
         <activity android:name=".timer.CountActivity" />
