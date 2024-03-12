@@ -2,6 +2,7 @@ package com.example.andrdemocode
 
 import android.content.Context
 import android.content.Intent
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -11,6 +12,8 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.andrdemocode.databinding.ActivityMainBinding
 import com.example.andrdemocode.grouprv.GroupRVActivity
+import com.example.andrdemocode.provider.MyDBHelper
+import com.example.andrdemocode.storage.StorageActivity
 import com.example.andrdemocode.tabview.MultiMusicSourceCollectionActivity
 import com.example.andrdemocode.timer.CountActivity
 
@@ -93,5 +96,16 @@ class MainActivity : AppCompatActivity() {
                 DEST_COUNT -> context.startActivity(Intent(context, CountActivity::class.java))
             }
         }
+    }
+
+    private fun cp() {
+        // 数据库
+        val dbHelper = MyDBHelper(this, 1)
+        val database = dbHelper.readableDatabase
+
+        // CP
+        val uri = Uri.parse("content://${packageName}.provider/table1")
+        val cursor = contentResolver.query(uri, arrayOf("_id", "name"), "name = ?", arrayOf("dy"), "name ASC")
+
     }
 }
