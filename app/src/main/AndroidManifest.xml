@@ -3,6 +3,7 @@
     package="com.example.andrdemocode">
 
     <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
 
     <application
         android:allowBackup="true"
@@ -11,6 +12,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AndrDemoCode">
+        <activity
+            android:name=".service.ServiceActivity"
+            android:exported="false" />
         <activity
             android:name=".storage.StorageActivity"
             android:exported="false" />
@@ -32,6 +36,7 @@
             </intent-filter>
         </activity>
         <service android:name=".service.HelloService" />
+        <service android:name=".service.MyBindService" />
         <provider
             android:authorities="com.example.andrdemocode.fileprovider"
             android:name="androidx.core.content.FileProvider"
