@@ -104,6 +104,7 @@ public class HelloService extends Service {
 
     private void useForegroundService() {
         // 前台服务有个通知显示给用户，系统不轻易回收服务
+        // 使用startForegroundService(intent)启动服务
         startForeground(1, createNotification());
     }
 

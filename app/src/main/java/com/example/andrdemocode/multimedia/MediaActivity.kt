@@ -7,6 +7,7 @@ import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
 import android.graphics.BitmapFactory
+import android.hardware.display.DisplayManager
 import android.media.MediaPlayer
 import android.net.Uri
 import android.os.Build
@@ -15,6 +16,7 @@ import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.provider.MediaStore
+import android.view.WindowInsets
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.MediaController
@@ -57,6 +59,35 @@ class MediaActivity : AppCompatActivity() {
         sendNotice()
         takePhoto()
         mediaPlay()
+
+        display()
+    }
+
+    /**
+     * Display：表示物理显示设备，提供屏幕尺寸、密度、刷新率等信息
+     */
+    private fun display() {
+        // 获取屏幕尺寸
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+
+            // 获取Display对象
+            val display = display
+            XLog.i(display.toString())
+
+            val currentWindowMetrics = windowManager.currentWindowMetrics
+            val rect = currentWindowMetrics.bounds
+            XLog.i("屏幕宽高 ${rect.width()} ${rect.height()}")  // 1080 2340
+            val insets =
+                currentWindowMetrics.windowInsets.getInsetsIgnoringVisibility(WindowInsets.Type.systemBars())  // 任何系统栏
+            XLog.i("系统栏宽高 $insets")
+            XLog.i("app实际宽高 ${rect.width() - insets.left - insets.right} ${rect.height() - insets.top - insets.bottom}")
+        }
+        val displays = (getSystemService(DISPLAY_SERVICE) as DisplayManager).displays
+        XLog.i("获取多屏display ${displays.size}")
+
+        val displayMetrics = resources.displayMetrics
+        XLog.i("displayMetrics ${displayMetrics.widthPixels} ${displayMetrics.heightPixels}") // 1080 2197 不包括系统装饰
+
     }
 
     private fun mediaPlay() {
