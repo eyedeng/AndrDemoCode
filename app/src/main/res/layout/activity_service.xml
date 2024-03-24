@@ -31,4 +31,16 @@
         android:layout_height="wrap_content"
         android:text="解绑服务" />
 
+    <Button
+        android:id="@+id/client_app"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="请求服务的client app" />
+
+    <Button
+        android:id="@+id/get_color"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="get color" />
+
 </LinearLayout>
