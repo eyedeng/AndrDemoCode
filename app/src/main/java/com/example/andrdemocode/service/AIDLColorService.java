@@ -8,6 +8,7 @@ import android.os.RemoteException;
 
 import com.example.andrdemocode.IMyAidlInterface;
 import com.example.andrdemocode.base.XLog;
+import com.example.andrdemocode.ipc.model.Car;
 
 import java.util.Random;
 
@@ -20,6 +21,11 @@ public class AIDLColorService extends Service {
             int color = Color.rgb(random.nextInt(256), random.nextInt(256), random.nextInt(256));
             XLog.i("getColor " + color);
             return color;
+        }
+
+        @Override
+        public void addCar(Car car) throws RemoteException {
+
         }
     };
 

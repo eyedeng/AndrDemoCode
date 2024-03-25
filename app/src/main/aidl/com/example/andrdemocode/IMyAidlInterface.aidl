@@ -2,6 +2,7 @@
 package com.example.andrdemocode;
 
 // Declare any non-default types here with import statements
+import com.example.andrdemocode.ipc.model.Car;
 
 interface IMyAidlInterface {
     /**
@@ -9,5 +10,7 @@ interface IMyAidlInterface {
      * and return values in AIDL.
      */
     int getColor();
+
+    void addCar(in Car car);
 
 }
