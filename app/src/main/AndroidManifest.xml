@@ -4,6 +4,7 @@
 
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+
     <permission android:name="com.example.andrdemocode.ACCESS_AIDL_SERVICE" />
 
     <application
@@ -14,10 +15,21 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AndrDemoCode">
+        <service
+            android:name=".ipc.MessengerService"
+            android:process=":remote" />
+
+        <activity
+            android:name=".ipc.ProcessBActivity"
+            android:exported="false"
+            android:process=":process_b" />
+        <activity
+            android:name=".ipc.ProcessAActivity"
+            android:exported="false" />
         <activity
             android:name=".service.ServiceActivity"
-            android:process=":p2"
-            android:exported="false" />
+            android:exported="false"
+            android:process=":p2" />
         <activity
             android:name=".storage.StorageActivity"
             android:exported="false" />
@@ -38,17 +50,20 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <service android:name=".service.HelloService" />
         <service android:name=".service.MyBindService" />
+
         <provider
-            android:authorities="com.example.andrdemocode.fileprovider"
             android:name="androidx.core.content.FileProvider"
+            android:authorities="com.example.andrdemocode.fileprovider"
             android:exported="false"
             android:grantUriPermissions="true">
             <meta-data
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/file_paths" />
         </provider>
+
         <service
             android:name=".service.AIDLColorService"
             android:enabled="true"
