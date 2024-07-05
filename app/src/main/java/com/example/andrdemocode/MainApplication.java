@@ -2,8 +2,10 @@ package com.example.andrdemocode;
 
 import android.app.ActivityManager;
 import android.app.Application;
+import android.content.Intent;
 
 import com.example.andrdemocode.base.XLog;
+import com.example.andrdemocode.cast.MainService;
 
 import java.util.List;
 
@@ -20,6 +22,7 @@ public class MainApplication extends Application {
 
         showProcess();
 
+        startService(new Intent(this, MainService.class));
     }
 
     /**

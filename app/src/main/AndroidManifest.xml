@@ -73,6 +73,10 @@
                 <action android:name="AIDLColorService" />
             </intent-filter>
         </service>
+        <service
+            android:name=".cast.MainService"
+            android:exported="false"
+            android:foregroundServiceType="mediaProjection" />
     </application>
 
 </manifest>
