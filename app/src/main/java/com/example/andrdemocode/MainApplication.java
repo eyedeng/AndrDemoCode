@@ -22,7 +22,7 @@ public class MainApplication extends Application {
 
         showProcess();
 
-        startService(new Intent(this, MainService.class));
+        startForegroundService(new Intent(this, MainService.class));
     }
 
     /**

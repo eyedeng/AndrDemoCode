@@ -1,19 +1,25 @@
 package com.example.andrdemocode
 
+import android.Manifest
 import android.content.Context
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.net.Uri
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
+import com.example.andrdemocode.base.XLog
+import com.example.andrdemocode.cast.ScreenActivity
 import com.example.andrdemocode.databinding.ActivityMainBinding
 import com.example.andrdemocode.grouprv.GroupRVActivity
 import com.example.andrdemocode.provider.MyDBHelper
-import com.example.andrdemocode.storage.StorageActivity
+import com.example.andrdemocode.service.ServiceActivity
 import com.example.andrdemocode.tabview.MultiMusicSourceCollectionActivity
 import com.example.andrdemocode.timer.CountActivity
 
@@ -42,6 +48,29 @@ class MainActivity : AppCompatActivity() {
 
         initData()
         intView()
+        initPermissions()
+    }
+
+    private fun initPermissions() {
+        val permissions = arrayOf(
+            Manifest.permission.MEDIA_CONTENT_CONTROL,
+            Manifest.permission.RECORD_AUDIO,
+        )
+        val grantedPermissions = permissions.map {
+            ContextCompat.checkSelfPermission(this, it) == PackageManager.PERMISSION_GRANTED
+        }.all { it }
+
+        if (!grantedPermissions) {
+            ActivityCompat.requestPermissions(this, permissions, 5)
+        }
+    }
+
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray
+    ) {
+       XLog.i("MainActivity", "Permission %d,%d", requestCode, grantResults[0])
     }
 
     private fun initData() {

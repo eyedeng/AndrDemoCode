@@ -17,10 +17,9 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.core.app.NotificationCompat;
 
-import com.example.andrdemocode.R;
 import com.example.andrdemocode.base.XLog;
+import com.example.andrdemocode.utils.ServiceUtil;
 
 /**
  * @author dengyan
@@ -109,17 +108,8 @@ public class HelloService extends Service {
     }
 
     private Notification createNotification() {
-        NotificationManager manager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            manager.createNotificationChannel(new NotificationChannel("my_serv", "前台服务", NotificationManager.IMPORTANCE_HIGH));
-        }
-        PendingIntent pendingIntent = PendingIntent.getActivity(this, 0,
-            new Intent(this, ServiceActivity.class), PendingIntent.FLAG_IMMUTABLE);
-        return new NotificationCompat.Builder(this, "my_serv")
-            .setContentTitle("服务")
-            .setContentText("your music is playing")
-            .setSmallIcon(R.drawable.btn_call_normal)
-            .setContentIntent(pendingIntent)
-            .build();
+        ServiceUtil.createNotificationChannel(this);
+        return ServiceUtil.getForegroundNotification(this, "服务",
+            "your music is playing", ServiceActivity.class);
     }
 }

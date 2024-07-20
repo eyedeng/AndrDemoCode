@@ -4,6 +4,7 @@
 
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.MEDIA_CONTENT_CONTROL" />
 
     <permission android:name="com.example.andrdemocode.ACCESS_AIDL_SERVICE" />
 
@@ -15,6 +16,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AndrDemoCode">
+        <activity
+            android:name=".cast.ScreenActivity"
+            android:exported="false" />
+
         <service
             android:name=".ipc.MessengerService"
             android:process=":remote" />
