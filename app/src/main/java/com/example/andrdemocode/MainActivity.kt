@@ -16,6 +16,7 @@ import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.example.andrdemocode.base.XLog
 import com.example.andrdemocode.cast.ScreenActivity
+import com.example.andrdemocode.cast.ScreenCaptureActivity
 import com.example.andrdemocode.databinding.ActivityMainBinding
 import com.example.andrdemocode.grouprv.GroupRVActivity
 import com.example.andrdemocode.provider.MyDBHelper
@@ -55,6 +56,8 @@ class MainActivity : AppCompatActivity() {
         val permissions = arrayOf(
             Manifest.permission.MEDIA_CONTENT_CONTROL,
             Manifest.permission.RECORD_AUDIO,
+            Manifest.permission.READ_EXTERNAL_STORAGE,
+            Manifest.permission.WRITE_EXTERNAL_STORAGE,
         )
         val grantedPermissions = permissions.map {
             ContextCompat.checkSelfPermission(this, it) == PackageManager.PERMISSION_GRANTED
