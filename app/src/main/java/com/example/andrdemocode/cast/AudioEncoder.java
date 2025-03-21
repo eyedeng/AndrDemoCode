@@ -29,7 +29,7 @@ public class AudioEncoder extends BaseEncoder {
     }
 
     @Override
-    public void prepare() {
+    public void doPrepare() {
         initAudioRecorder();
         initEncoder();
     }
@@ -59,14 +59,14 @@ public class AudioEncoder extends BaseEncoder {
     }
 
     @Override
-    public void start() {
+    public void doStart() {
         audioRecord.startRecording();
         mediaCodec.start();
         XLog.i(TAG, "AudioEncoder started");
     }
 
     @Override
-    public void stop() {
+    public void doStop() {
         stopAudioRecorder();
     }
 
@@ -104,8 +104,8 @@ public class AudioEncoder extends BaseEncoder {
 
         @Override
         public void onOutputBufferAvailable(MediaCodec codec, int index, MediaCodec.BufferInfo info) {
-            XLog.i(TAG, "Audio output buffer available, index=" + index + " size=" + info.size +
-                    " pts=" + info.presentationTimeUs + " flags=" + info.flags);
+//            XLog.i(TAG, "Audio output buffer available, index=" + index + " size=" + info.size +
+//                    " pts=" + info.presentationTimeUs + " flags=" + info.flags);
             if (trackIndex == -1) {
                 codec.releaseOutputBuffer(index, false);
                 return;

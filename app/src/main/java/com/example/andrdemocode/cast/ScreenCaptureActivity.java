@@ -133,10 +133,12 @@ public class ScreenCaptureActivity extends AppCompatActivity {
         if (videoEncoder != null) {
             videoEncoder.stop();
             videoEncoder.release();
+            videoEncoder = null;
         }
         if (audioEncoder != null) {
             audioEncoder.stop();
             audioEncoder.release();
+            audioEncoder = null;
         }
         if (muxerWrapper != null) {
             muxerWrapper.stop();

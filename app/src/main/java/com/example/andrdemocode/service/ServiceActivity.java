@@ -8,7 +8,11 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.ServiceConnection;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.HandlerThread;
 import android.os.IBinder;
+import android.os.Looper;
+import android.os.Message;
 import android.os.RemoteException;
 
 import com.example.andrdemocode.IMyAidlInterface;
@@ -88,5 +92,31 @@ public class ServiceActivity extends AppCompatActivity {
                 throw new RuntimeException(e);
             }
         });
+    }
+
+    private void handlerDemo() {
+        // 子线程发消息到主线程
+        Handler handler = new Handler(Looper.getMainLooper(), msg -> {
+            String result = (String) msg.obj;
+            return true;
+        });
+        new Thread(() -> {
+            try {
+                Thread.sleep(2000);
+                Message msg = handler.obtainMessage(0, "数据加载完成");
+                handler.sendMessage(msg);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }).start();
+
+        HandlerThread workThread = new HandlerThread("workThread");
+        workThread.start();
+        Handler workHandler = new Handler(workThread.getLooper());
+        workHandler.postDelayed(() -> {
+
+        }, 2000);
+        workHandler.removeCallbacksAndMessages(null);
+        workThread.quitSafely();
     }
 }

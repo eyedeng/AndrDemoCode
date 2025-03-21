@@ -46,7 +46,7 @@ public class VideoEncoder extends BaseEncoder {
     }
 
     @Override
-    public void prepare() {
+    public void doPrepare() {
         initVirtualDisplay();
         initEncoder();
     }
@@ -85,18 +85,19 @@ public class VideoEncoder extends BaseEncoder {
     }
 
     @Override
-    public void start() {
+    public void doStart() {
         mediaCodec.start();
         XLog.i(TAG, "VideoEncoder started");
     }
 
     @Override
-    public void stop() {
+    public void doStop() {
         stopVirtualDisplay();
         if (mediaCodec != null) {
             // 对视频编码器发送结束信号
             mediaCodec.signalEndOfInputStream();
         }
+        stopped = true;
     }
 
     private void stopVirtualDisplay() {
@@ -119,6 +120,9 @@ public class VideoEncoder extends BaseEncoder {
 //                    " pts=" + info.presentationTimeUs + " flags=" + info.flags);
             if (trackIndex == -1) {
                 codec.releaseOutputBuffer(index, false);
+                return;
+            }
+            if (stopped) {
                 return;
             }
             ByteBuffer buffer = codec.getOutputBuffer(index);
